@@ -7,6 +7,8 @@
   export let className: string = "";
 
   const dispatch = createEventDispatcher();
+  let restClass = "";
+  let restProps: Record<string, unknown> = {};
 
   const base =
     "inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60";
@@ -17,11 +19,12 @@
     ghost: "border-transparent bg-transparent text-slate-700 hover:bg-slate-100 focus:ring-slate-100"
   } as const;
 
-  $: classes = `${base} ${variants[variant]} ${className}`.trim();
+  $: ({ class: restClass = "", ...restProps } = $$restProps);
+  $: classes = `${base} ${variants[variant]} ${className} ${restClass}`.trim();
 </script>
 
 <button
-  {...$$restProps}
+  {...restProps}
   type={type}
   class={classes}
   disabled={disabled}

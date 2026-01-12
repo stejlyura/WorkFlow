@@ -92,7 +92,7 @@
   });
 </script>
 
-<div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+<div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between m-3">
   <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
     <input
       class="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 shadow-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-100 sm:w-64"
@@ -100,15 +100,18 @@
       bind:value={$search}
     />
 
-    <select
-      class="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-100 sm:w-48"
-      bind:value={$sortKey}
-    >
-      <option value="name">name</option>
-      <option value="position">position</option>
-      <option value="salary">salary</option>
-      <option value="currentPosition">currentPosition</option>
-    </select>
+    <div>
+      <select
+        class="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-100 sm:w-48"
+        bind:value={$sortKey}
+      >
+        <option value="name">name</option>
+        <option value="position">position</option>
+        <option value="salary">salary</option>
+        <option value="currentPosition">currentPosition</option>
+      </select>
+    </div>
+    
   </div>
 
   <button
@@ -117,6 +120,7 @@
   >
     Sort: {$sortDir}
   </button>
+  
 </div>
 
 <Table
@@ -132,4 +136,6 @@
   onAddCancel={cancelAdd}
 />
 
-<Button on:click={() => (isAdding = true)} data-add-button>Add new</Button>
+<Button on:click={() => (isAdding = true)} class="m-3" data-add-button>Add new</Button>
+
+

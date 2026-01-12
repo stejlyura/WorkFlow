@@ -6,7 +6,5 @@
 <Home/>
 
 <style lang="tailwind">
-  :global(body) {
-    margin: 10px;
-  }
+
 </style>

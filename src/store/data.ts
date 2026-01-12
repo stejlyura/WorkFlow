@@ -8,9 +8,41 @@ export type Data = {
   currentPosition: string
 }
 
-const initialData: Data[] = []
+const storageKey = "workflow.data"
+
+const loadFromStorage = (): Data[] => {
+  if (typeof window === "undefined" || !window.localStorage) {
+    return []
+  }
+
+  const raw = window.localStorage.getItem(storageKey)
+  if (!raw) {
+    return []
+  }
+
+  try {
+    const parsed = JSON.parse(raw) as Data[]
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+const saveToStorage = (items: Data[]) => {
+  if (typeof window === "undefined" || !window.localStorage) {
+    return
+  }
+
+  window.localStorage.setItem(storageKey, JSON.stringify(items))
+}
+
+const initialData: Data[] = loadFromStorage()
 
 export const dataStore = writable<Data[]>(initialData)
+
+dataStore.subscribe((items) => {
+  saveToStorage(items)
+})
 
 export const setData = (next: Data[]) => dataStore.set(next)
 
