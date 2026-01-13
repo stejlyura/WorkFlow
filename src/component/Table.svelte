@@ -152,7 +152,7 @@
   {#if rows.length === 0 && !isAddingCheck}
     <div class="px-4 py-3 text-sm text-slate-500">No data yet</div>
   {:else}
-    <div class="divide-y divide-slate-100">
+    <div class="divide-y divide-slate-100 text-center self-center" >
       {#each rows as item (item.id)}
         <div
           class={`grid ${columnClass} gap-2 px-4 py-2 text-sm text-slate-800`}
