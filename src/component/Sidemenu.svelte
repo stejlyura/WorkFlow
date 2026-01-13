@@ -1,5 +1,5 @@
 <script lang="ts">
-    const type: MenuTypes = {
+    type MenuTypes = {
         id: number,
         name: string,
         link: string
@@ -11,10 +11,11 @@
     ]
 </script>
 
-<aside>
-    {#each Menu as item (item.id)}
-        <div>
-            <div>{name}</div>
-        </div>
-    {/each}
+
+<aside class="w-full bg-slate-900 text-white shadow-sm">
+        {#each Menu as item (item.id)}
+            <div>
+                <div>{item.name}</div>
+            </div>
+        {/each}
 </aside>
