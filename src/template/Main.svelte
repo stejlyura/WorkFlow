@@ -1,11 +1,14 @@
 <script lang="ts">
-    import TableContainer from "../component/TableContainer.svelte";
     import Header from "../component/Header.svelte";
-    import Sidemenu from "../component/Sidemenu.svelte";
+    import Sidemenu from "../component/sidemenu/Sidemenu.svelte";
+    import { windowStore } from "../store/window";
 </script>
 
-<Header/>
-<main class="w-full h-full">
-    <Sidemenu/>
-    <TableContainer/>
-</main>
+<div class="flex min-h-screen flex-col">
+    <main class="flex w-full flex-1">
+        <Sidemenu />
+        <div class="min-w-0 flex-1">
+            <svelte:component this={$windowStore} />
+        </div>
+    </main>
+</div>

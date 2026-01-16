@@ -25,9 +25,15 @@
     "tailwindcss": "^4.1.18",
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
-    "wait-on": "^9.0.3"
+    "wait-on": "^9.0.3",
+    "@tailwindcss/vite": "^4.1.18"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18"
+    "svelte-fullcalendar": "^3.0.0",
+    "@fullcalendar/core": "^6.1.20",
+    "@fullcalendar/daygrid": "^6.1.20",
+    "@fullcalendar/interaction": "^6.1.20",
+    "@fullcalendar/list": "^6.1.20",
+    "@fullcalendar/timegrid": "^6.1.20"
   }
 }
