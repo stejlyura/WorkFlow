@@ -1,5 +1,6 @@
 const { app, BrowserWindow, Menu, Tray } = require("electron");
 const path = require("path");
+const { setupStorePersistence } = require("./storePersistence.cjs");
 
 const isDev = !app.isPackaged;
 
@@ -73,6 +74,7 @@ function createTray() {
 }
 
 app.whenReady().then(() => {
+  setupStorePersistence();
   createWindow();
   createTray();
 

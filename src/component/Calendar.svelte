@@ -238,8 +238,8 @@
   $: isEditing = editingId !== null
 </script>
 
-<section class="w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-  <div class="mb-2 text-xs font-semibold text-slate-500">Calendar View</div>
+<section class="app-card">
+  <div class="mb-2 app-section-title">Calendar View</div>
 
   <div class="grid items-center gap-3 pb-3 lg:grid-cols-[1fr_auto_1fr]">
     <div class="flex flex-wrap gap-2">
@@ -288,7 +288,7 @@
     </div>
   </div>
 
-  <div class="rounded-xl border border-slate-200 bg-slate-50 p-2">
+  <div class="app-card-muted p-2">
     <FullCalendar bind:this={calendarRef} {options} />
   </div>
 </section>
@@ -413,4 +413,3 @@
     border-radius: 8px;
   }
 </style>
-

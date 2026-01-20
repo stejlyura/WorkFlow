@@ -11,9 +11,9 @@
   let restProps: Record<string, unknown> = {};
 
   const base =
-    "inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium shadow-sm transition-colors focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60";
+    "inline-flex items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold shadow-sm transition-colors focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60";
   const variants = {
-    success: "border-green-700 bg-green-600 text-white hover:bg-green-700 focus:ring-green-100",
+    success: "border-blue-600 bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-100",
     danger: "border-red-600 bg-red-600 text-white hover:bg-red-700 focus:ring-red-100",
     neutral: "border-slate-200 bg-white text-slate-700 hover:bg-slate-50 focus:ring-slate-100",
     ghost: "border-transparent bg-transparent text-slate-700 hover:bg-slate-100 focus:ring-slate-100"

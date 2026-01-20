@@ -92,50 +92,57 @@
   });
 </script>
 
-<div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between m-3">
-  <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
-    <input
-      class="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-400 shadow-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-100 sm:w-64"
-      placeholder="Search..."
-      bind:value={$search}
-    />
+<section class="app-card">
+  <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+      <div>
+        <div class="app-section-title">Resume Tracker</div>
+        <div class="text-sm font-semibold text-slate-700">Applications</div>
+      </div>
 
-    <div>
-      <select
-        class="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 shadow-sm focus:border-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-100 sm:w-48"
-        bind:value={$sortKey}
-      >
-        <option value="name">name</option>
-        <option value="position">position</option>
-        <option value="salary">salary</option>
-        <option value="currentPosition">currentPosition</option>
-      </select>
+      <input
+        class="placeholder:text-slate-400 sm:w-64"
+        placeholder="Search..."
+        bind:value={$search}
+      />
+
+      <div>
+        <select
+          class="sm:w-48"
+          bind:value={$sortKey}
+        >
+          <option value="name">name</option>
+          <option value="position">position</option>
+          <option value="salary">salary</option>
+          <option value="currentPosition">currentPosition</option>
+        </select>
+      </div>
     </div>
-    
+
+    <button
+      class="inline-flex items-center justify-center rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100"
+      on:click={() => sortDir.update((v) => (v === "asc" ? "desc" : "asc"))}
+    >
+      Sort: {$sortDir}
+    </button>
   </div>
 
-  <button
-    class="inline-flex items-center justify-center rounded-md border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-100"
-    on:click={() => sortDir.update((v) => (v === "asc" ? "desc" : "asc"))}
-  >
-    Sort: {$sortDir}
-  </button>
-  
-</div>
+  <Table
+    rowsStore={visibleRows}
+    showAddRow={isAdding}
+    isAddingCheck={isAdding}
+    bind:draft
+    canSave={canSave}
+    onSave={saveDraft}
+    onRemove={removeRow}
+    onUpdate={updateRow}
+    onEditStart={() => (isAdding = false)}
+    onAddCancel={cancelAdd}
+  />
 
-<Table
-  rowsStore={visibleRows}
-  showAddRow={isAdding}
-  isAddingCheck={isAdding}
-  bind:draft
-  canSave={canSave}
-  onSave={saveDraft}
-  onRemove={removeRow}
-  onUpdate={updateRow}
-  onEditStart={() => (isAdding = false)}
-  onAddCancel={cancelAdd}
-/>
-
-<Button on:click={() => (isAdding = true)} class="m-3" data-add-button>Add new</Button>
+  <div class="mt-4 flex justify-end">
+    <Button on:click={() => (isAdding = true)} data-add-button>Add new</Button>
+  </div>
+</section>
 
 

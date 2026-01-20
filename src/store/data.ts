@@ -10,8 +10,10 @@ export type Data = {
 
 const storageKey = "workflow.data"
 
+const isDesktop = () => typeof window !== "undefined" && !!window.desktop
+
 const loadFromStorage = (): Data[] => {
-  if (typeof window === "undefined" || !window.localStorage) {
+  if (isDesktop() || typeof window === "undefined" || !window.localStorage) {
     return []
   }
 
@@ -29,7 +31,7 @@ const loadFromStorage = (): Data[] => {
 }
 
 const saveToStorage = (items: Data[]) => {
-  if (typeof window === "undefined" || !window.localStorage) {
+  if (isDesktop() || typeof window === "undefined" || !window.localStorage) {
     return
   }
 
