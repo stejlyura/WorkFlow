@@ -183,6 +183,12 @@
   const handlePrev = () => calendarRef?.getAPI().prev()
   const handleNext = () => calendarRef?.getAPI().next()
   const handleViewChange = (view: string) => calendarRef?.getAPI().changeView(view)
+  const handleOverlayKeydown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      closeModal()
+    }
+  }
 
   // Мапимо store -> EventInput (FullCalendar)
   $: fcEvents = ($calendarEvents ?? []).map<EventInput>((e) => ({
@@ -294,7 +300,14 @@
 </section>
 
 {#if isModalOpen}
-  <div class="fixed inset-0 z-50 grid place-items-center bg-slate-900/20 p-4" on:click|self={closeModal}>
+  <div
+    class="fixed inset-0 z-50 grid place-items-center bg-slate-900/20 p-4"
+    role="button"
+    tabindex="0"
+    aria-label="Close modal"
+    on:click|self={closeModal}
+    on:keydown|self={handleOverlayKeydown}
+  >
     <div class="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
       <div class="mb-3 flex items-center justify-between">
         <h3 class="text-sm font-semibold">{isEditing ? 'Edit event' : 'Add event'}</h3>
@@ -360,7 +373,7 @@
                 style={`background-color: ${color}`}
                 aria-label="Pick color"
                 on:click={() => (formColor = color)}
-              />
+              ></button>
             {/each}
           </div>
         </div>

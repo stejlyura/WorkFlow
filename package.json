@@ -1,5 +1,7 @@
 {
   "name": "workflow",
+  "description": "WorkFlow desktop app",
+  "author": "Yurii",
   "private": true,
   "version": "1.0.0",
   "type": "module",
